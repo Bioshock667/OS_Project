@@ -78,15 +78,16 @@ int VirtualMachine::read(string filename)
     if (ext != ".o"){
 	return 0;
     }
+    string oFileName = "o_files/" + filename;
     ifstream object;
-    object.open(filename.c_str());
+    object.open(oFileName.c_str());
     if(object.fail()) {
 	return 0;
     }
     filename.erase(filename.end()-2, filename.end());
     string infile, outfile;
-    infile = filename + ".in";
-    outfile = filename + ".out";
+    infile = "in_files/" + filename + ".in";
+    outfile = "out_files/" + filename + ".out";
     int code;
     int i = 0;
     while(object>>code)
@@ -98,7 +99,9 @@ int VirtualMachine::read(string filename)
     object.close();
     in.open(infile.c_str());
     if(in.fail())
-	return 0;
+	inputAvailiable = false;
+    else
+	inputAvailiable = true;
     out.open(outfile.c_str());
     return 1;
 }
@@ -505,7 +508,10 @@ void VirtualMachine::Return() //populate the registers with values popped from s
 }
 void VirtualMachine::read()
 {
-    in >> r[rd];
+    if(inputAvailiable)
+    {
+    	in >> r[rd];
+    }
     clk += 28;
 }
 void VirtualMachine::write()

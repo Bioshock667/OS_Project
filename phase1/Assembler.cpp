@@ -22,12 +22,13 @@ Assembler::Assembler()
 
 void Assembler::compile(string filename)
 {
- 
-    string sfile = filename;
+    string sFilesFolder = "s_files/";
+    string oFilesFolder = "o_files/";
+    string sfile = sFilesFolder + filename;
     ifstream infile;
     infile.open(sfile.c_str());
       filename.replace(filename.end()-2, filename.end(), ".o");//create name for object file
-    string ofile = filename;
+    string ofile = oFilesFolder + filename;
     ofstream outfile;
     outfile.open(ofile.c_str());
 

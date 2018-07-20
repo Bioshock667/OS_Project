@@ -1,7 +1,7 @@
 objects=VirtualMachine.o Assembler.o format.o
 
 os: os.cpp $(objects)
-	g++ os.cpp $(objects) -g -o os
+	g++ os.cpp $(objects) -lstdc++fs -g -o os
 
 VirtualMachine.o: VirtualMachine.cpp
 	g++ -c -g VirtualMachine.cpp

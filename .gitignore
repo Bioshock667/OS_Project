@@ -1,0 +1,8 @@
+#executables
+os
+a.out
+
+#C++ object files
+VirtualMachine.o
+Assembler.o
+format.o

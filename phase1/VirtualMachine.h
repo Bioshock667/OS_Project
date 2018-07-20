@@ -41,6 +41,8 @@ class VirtualMachine {
         void checkCarry(int res);
 	void checkOverflow(short res);
 
+	bool inputAvailiable;
+
         typedef void (VirtualMachine::*FP)();
 
         map<int, FP> instr;
